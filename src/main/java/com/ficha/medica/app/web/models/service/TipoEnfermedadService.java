@@ -12,7 +12,7 @@ import com.ficha.medica.app.web.models.entities.TipoEnfermedad;
 @Service
 public class TipoEnfermedadService implements ITipoEnfermedadService {
 
-	@Autowired //Inyección de dependencia
+	@Autowired 
 	private ITipoEnfermedad dao;
 		
 	@Override

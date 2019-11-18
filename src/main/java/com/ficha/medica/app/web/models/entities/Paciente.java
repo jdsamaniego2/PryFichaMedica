@@ -31,6 +31,12 @@ public class Paciente extends Persona implements Serializable {
 	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
 	private List<CasoEmergencia> casosEmergencia;
 		
+	
+	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+	private List<AntecedentePatologico> antecedentesPatologicos;
+	
+	
+	
 	//Bitácora
 	@Column(name="CREADOPOR")
 	@Size(max=35)
@@ -98,7 +104,13 @@ public class Paciente extends Persona implements Serializable {
 	}
 	
 	
-	
+	public List<AntecedentePatologico> getAntecedentePatologico() {
+		return antecedentesPatologicos;
+	}
+
+	public void setAntecedentePatologico(List<AntecedentePatologico> antecedentePatologico) {
+		this.antecedentesPatologicos = antecedentePatologico;
+	}
 	
 	
 	
