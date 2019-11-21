@@ -25,6 +25,11 @@
 						
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/tipoenfermedad/list}">Tipo de enfermedad</a></li>
+
+				<li class="nav-item"><a class="nav-link"
+						th:href="@{/catalogoseguro/list}">Catalogo de Seguros</a></li>
+				 
+
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/tipoincidencia/list}">Tipo de incidencia</a></li>
 					<li class="nav-item"><a class="nav-link"	
@@ -47,9 +52,10 @@
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/problemadetectado/list}">Problema Detectado</a></li>
 
-				</ul>
+				</ul> 
 			</div>
-		</nav>		
+	</nav>
+				
 		<div id="success-alert" class="alert alert-success" role="alert"
 			th:if="${success != null}">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
