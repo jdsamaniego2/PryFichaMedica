@@ -20,7 +20,7 @@ public class AsociacionEmpleado implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name="ASOCIACIONEMPLEADO")
+	@Column(name="IDASOCIACIONEMPLEADO")
 	private Integer idasociacionempleado;
 	
 	@Column(name = "NOMBRE")
