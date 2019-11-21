@@ -1,5 +1,6 @@
 package com.ficha.medica.app.web.controllers;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,39 +12,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ficha.medica.app.web.models.entities.Paciente;
-import com.ficha.medica.app.web.models.service.IPacienteService;
+import com.ficha.medica.app.web.models.entities.CatalogoSeguro; 
+import com.ficha.medica.app.web.models.service.ICatalogoSeguroService;
 
 @Controller
-@RequestMapping(value="/paciente")
-public class PacienteController {
+@RequestMapping(value="/catalogoseguro")
+public class CatalogoSeguroController {
 
 	@Autowired
-	private IPacienteService service;
+	private ICatalogoSeguroService service;
 	
 	
 	@GetMapping(value="/create")
 	public String create(Model model) {
-		Paciente paciente = new Paciente();
-		model.addAttribute("title", "Registro de un nuevo paciente");
-		model.addAttribute("paciente", paciente);
-		return "paciente/form";		
+		CatalogoSeguro catalogoseguro = new CatalogoSeguro();
+		model.addAttribute("title", "Registro de un nuevo seguro");
+		model.addAttribute("catalogoseguro", catalogoseguro);
+		return "catalogoseguro/form";		
 	}
 	
 	@GetMapping(value="/retrieve/{id}")
 	public String retrieve(@PathVariable(value="id") Integer id, Model model) {
-		Paciente paciente = service.findById(id);
-		model.addAttribute("paciente", paciente);
-		return "paciente/card";		
+		CatalogoSeguro catalogoseguro = service.findById(id);
+		model.addAttribute("catalogoseguro", catalogoseguro);
+		return "catalogoseguro/card";		
 	} 
 	
 	@GetMapping(value="/update/{id}")
 	public String update(@PathVariable(value="id") Integer id, Model model) {
-		Paciente paciente = service.findById(id);
+		CatalogoSeguro catalogoseguro  = service.findById(id);
 		model.addAttribute("title", "Actualizando el registro de " 
-		+ paciente.getNombres()+" "+paciente.getApellidos());
-		model.addAttribute("paciente", paciente);
-		return "paciente/form";		
+		+ catalogoseguro.getNombre()+" "+catalogoseguro.getTipoSeguro());
+		model.addAttribute("catalogoseguro", catalogoseguro);
+		return "catalogoseguro/form";		
 	} 
 	
 	@GetMapping(value="/delete/{id}")
@@ -56,27 +57,29 @@ public class PacienteController {
 		catch(Exception ex) {
 			flash.addFlashAttribute("error", "El registro no pudo ser eliminado.");
 		}
-		return "redirect:/paciente/list";		
+		return "redirect:/catalogoseguro/list";		
 	} 
 	
 	@PostMapping(value="/save")
-	public String save(Paciente paciente, Model model,
+	public String save(CatalogoSeguro catalogoseguro, Model model,
 			RedirectAttributes flash) {
 		try {
-			service.save(paciente);
+			service.save(catalogoseguro);
 			flash.addFlashAttribute("success", "El registro fue guardado con éxito.");
 		}
 		catch(Exception ex) {
 			flash.addFlashAttribute("error", "El registro no pudo ser guardado.");
 		}
-		return "redirect:/paciente/list";		
+		return "redirect:/catalogoseguro/list";		
 	} 
 	
 	@GetMapping(value="/list")
 	public String list(Model model) {
-		List<Paciente> lista = service.findAll();
-		model.addAttribute("title", "Listado de pacientes");
+		List<CatalogoSeguro> lista = service.findAll();
+		model.addAttribute("title", "Listado de seguros");
 		model.addAttribute("lista", lista);
-		return "paciente/list";		
+		return "catalogoseguro/list";		
 	} 
+	
 }
+
