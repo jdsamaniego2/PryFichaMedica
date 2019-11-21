@@ -32,7 +32,7 @@ public class CausaAccionController {
 	@GetMapping(value="/retrieve/{id}")
 	public String retrieve(@PathVariable(value="id") Integer id, Model model) {
 		CausaAccion causaAccion = service.findById(id);
-		model.addAttribute("asociacionEmpleado", causaAccion);
+		model.addAttribute("causaAccion", causaAccion);
 		return "causaaccion/card";		
 	} 
 	
