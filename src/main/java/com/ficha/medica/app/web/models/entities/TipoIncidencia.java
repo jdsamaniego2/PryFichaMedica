@@ -12,36 +12,35 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "ASOCIACIONEMPLEADO")
-public class AsociacionEmpleado implements Serializable {
+@Table(name="TIPOINCIDENCIA")
+public class TipoIncidencia implements Serializable {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name="IDASOCIACIONEMPLEADO")
-	private Integer idasociacionempleado;
+	@Column(name="IDTIPOINCIDENCIA")
+	private Integer idtipoincidencia;
 	
 	@Column(name = "NOMBRE")
-	@Size(max=50)
+	@Size(max=45)
 	private String nombre;
 	
-	public AsociacionEmpleado() {
+
+	public TipoIncidencia() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public AsociacionEmpleado(Integer idasociacionempleado) {
-		super();
-		this.idasociacionempleado = idasociacionempleado;
+	public Integer getIdtipoincidencia() {
+		return idtipoincidencia;
 	}
 
-	public Integer getIdasociacionempleado() {
-		return idasociacionempleado;
-	}
-
-	public void setIdasociacionempleado(Integer idasociacionempleado) {
-		this.idasociacionempleado = idasociacionempleado;
+	public void setIdtipoincidencia(Integer idtipoincidencia) {
+		this.idtipoincidencia = idtipoincidencia;
 	}
 
 	public String getNombre() {
@@ -52,6 +51,10 @@ public class AsociacionEmpleado implements Serializable {
 		this.nombre = nombre;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 	
+
 }

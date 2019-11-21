@@ -12,36 +12,39 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "ASOCIACIONEMPLEADO")
-public class AsociacionEmpleado implements Serializable {
-
+@Table(name = "CAUSAACCION")
+public class CausaAccion implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name="IDASOCIACIONEMPLEADO")
-	private Integer idasociacionempleado;
+	@Column(name="CAUSAACCION")
+	private Integer idcausaaccion;
 	
 	@Column(name = "NOMBRE")
 	@Size(max=50)
 	private String nombre;
 	
-	public AsociacionEmpleado() {
+	@Column(name = "CAUSA")
+	@Size(max=50)
+	private String causa;
+	
+	public CausaAccion() {
 		super();
 	}
 
-	public AsociacionEmpleado(Integer idasociacionempleado) {
+	public CausaAccion(Integer idcausaaccion) {
 		super();
-		this.idasociacionempleado = idasociacionempleado;
+		this.idcausaaccion = idcausaaccion;
 	}
 
-	public Integer getIdasociacionempleado() {
-		return idasociacionempleado;
+	public Integer getIdcausaaccion() {
+		return idcausaaccion;
 	}
 
-	public void setIdasociacionempleado(Integer idasociacionempleado) {
-		this.idasociacionempleado = idasociacionempleado;
+	public void setIdcausaaccion(Integer idcausaaccion) {
+		this.idcausaaccion = idcausaaccion;
 	}
 
 	public String getNombre() {
@@ -52,6 +55,12 @@ public class AsociacionEmpleado implements Serializable {
 		this.nombre = nombre;
 	}
 
-	
+	public String getCausa() {
+		return causa;
+	}
+
+	public void setCausa(String causa) {
+		this.causa = causa;
+	}
 	
 }
