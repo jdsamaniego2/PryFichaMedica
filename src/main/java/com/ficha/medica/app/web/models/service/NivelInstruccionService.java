@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ficha.medica.app.web.models.dao.INivelInstruccion;
-import com.ficha.medica.app.web.models.dao.ITipoDiscapacidad;
+
 import com.ficha.medica.app.web.models.entities.NivelInstruccion;
-import com.ficha.medica.app.web.models.entities.TipoDiscapacidad;
+
 
 @Service
 public class NivelInstruccionService implements INivelInstruccionService{

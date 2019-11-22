@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: frgHead">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<!--<meta charset="ISO-8859-1">-->
-<title>Lista de Paises</title>
-</head>
+<head th:replace="layout :: frgHead"></head>
 <body>
- 
 <div id="wrapper">
 	<header th:replace="layout :: frgHeader"></header>
 	<div id="content-wrapper" class="d-flex flex-column">
@@ -26,31 +21,31 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th><i class="fas fa-info-circle"></i>&nbsp;País</th>
-                            <th><i class="fas fa-info-circle"></i>&nbsp;Nacioanlidad</th>	
-							<th><a class="btn btn-sm btn-success" th:href="@{/pais/create}" >
+							<th><i class="fas fa-info-circle"></i>&nbsp;Nombre</th>
+							<th><i class="far fa-sticky-note"></i>&nbsp;Unidad/Medida</th>							
+							<th><a class="btn btn-sm btn-success" th:href="@{/examenlaboratorio/create}" >
 								<i class="fas fa-plus"></i>&nbsp;Nuevo</a>
 							</th>
 						</tr>
 					</thead>
 					<tbody>						
-						<tr th:each="pais : ${lista}" >
-							<td th:text="${pais.nombre}"></td>
-							<td th:text="${pais.nacionalidad}"></td>
+						<tr th:each="examenlaboratorio : ${lista}" >
+							<td th:text="${examenlaboratorio.nombre}"></td>
+							<td th:text="${examenlaboratorio.unidad}"></td>
 							<td>
 								<div class="row">
 									<a class="btn btn-sm btn-warning" title="Editar"
-									   th:href="@{/pais/update/} + ${pais.idpais}">
+									   th:href="@{/examenlaboratorio/update/} + ${examenlaboratorio.idexamenlaboratorio}">
 										<i class="fas fa-edit"></i>
 									</a>
 									<a class="btn btn-sm btn-primary" title="Ver"
-									   th:href="@{/pais/retrieve/} + ${pais.idpais}">
+									   th:href="@{/examenlaboratorio/retrieve/} + ${examenlaboratorio.idexamenlaboratorio}">
 										<i class="fas fa-eye"></i>
 									</a>									
 								</div>
 
 							</td>							
-						</tr>		
+						</tr>				
 					
 					</tbody>
 				</table>
@@ -61,3 +56,5 @@
 		</div>
 	</div>
 </div>
+</body>
+</html>
