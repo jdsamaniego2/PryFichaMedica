@@ -11,39 +11,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ficha.medica.app.web.models.entities.Paciente;
-import com.ficha.medica.app.web.models.service.IPacienteService;
+import com.ficha.medica.app.web.models.entities.Sede;
+import com.ficha.medica.app.web.models.service.ISedeService;
 
 @Controller
-@RequestMapping(value="/paciente")
-public class PacienteController {
-
+@RequestMapping(value="/sede")
+public class SedeController {
+	
 	@Autowired
-	private IPacienteService service;
+	private ISedeService service;
 	
 	
 	@GetMapping(value="/create")
 	public String create(Model model) {
-		Paciente paciente = new Paciente();
-		model.addAttribute("title", "Registro de un nuevo paciente");
-		model.addAttribute("paciente", paciente);
-		return "paciente/form";		
+		Sede sede = new Sede();
+		model.addAttribute("title", "Registro de una nueva sede");
+		model.addAttribute("sede", sede);
+		return "sede/form";		
 	}
 	
 	@GetMapping(value="/retrieve/{id}")
 	public String retrieve(@PathVariable(value="id") Integer id, Model model) {
-		Paciente paciente = service.findById(id);
-		model.addAttribute("paciente", paciente);
-		return "paciente/card";		
+		Sede sede = service.findById(id);
+		model.addAttribute("sede", sede);
+		return "sede/card";		
 	} 
 	
 	@GetMapping(value="/update/{id}")
 	public String update(@PathVariable(value="id") Integer id, Model model) {
-		Paciente paciente = service.findById(id);
-		model.addAttribute("title", "Actualizando el registro de " 
-		+ paciente.getNombres()+" "+paciente.getApellidos());
-		model.addAttribute("paciente", paciente);
-		return "paciente/form";		
+		Sede sede = service.findById(id);
+		model.addAttribute("title", "Actualizando el registro de " + sede.getNombre());
+		model.addAttribute("sede", sede);
+		return "sede/form";		
 	} 
 	
 	@GetMapping(value="/delete/{id}")
@@ -56,27 +55,28 @@ public class PacienteController {
 		catch(Exception ex) {
 			flash.addFlashAttribute("error", "El registro no pudo ser eliminado.");
 		}
-		return "redirect:/paciente/list";		
+		return "redirect:/sede/list";		
 	} 
 	
 	@PostMapping(value="/save")
-	public String save(Paciente paciente, Model model,
+	public String save(Sede sede, Model model,
 			RedirectAttributes flash) {
 		try {
-			service.save(paciente);
+			service.save(sede);
 			flash.addFlashAttribute("success", "El registro fue guardado con éxito.");
 		}
 		catch(Exception ex) {
 			flash.addFlashAttribute("error", "El registro no pudo ser guardado.");
 		}
-		return "redirect:/paciente/list";		
+		return "redirect:/sede/list";		
 	} 
 	
 	@GetMapping(value="/list")
 	public String list(Model model) {
-		List<Paciente> lista = service.findAll();
-		model.addAttribute("title", "Listado de pacientes");
+		List<Sede> lista = service.findAll();
+		model.addAttribute("title", "Listado de sedes");
 		model.addAttribute("lista", lista);
-		return "paciente/list";		
+		return "sede/list";		
 	} 
+
 }
